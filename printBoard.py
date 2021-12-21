@@ -1,6 +1,6 @@
 from board import *
 
-class Impressao():
+class printBoard():
     def __init__(self, base):
         self.base = base
         self.board = Board(base=self.base, print=False).board
@@ -24,7 +24,3 @@ class Impressao():
             i = 0
             j += 1
         print(Linha, end="\n")
-
-numero = int(input("Digite a base do tabuleiro: "))
-
-Impressao(base=numero).imprimir()
