@@ -1,6 +1,6 @@
 from board import *
 
-class printBoard():
+class PrintBoard():
     def __init__(self, base):
         self.base = base
         self.board = Board(base=self.base, print=False).board
