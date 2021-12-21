@@ -1,11 +1,11 @@
-import numpy as np
 from random import sample
 
 class Board():
-    def __init__(self, base):
+    def __init__(self, base, print):
         self.base = base
         self.size = base*base
-        self.board = self.createSolutionBoard()
+        self.print = print
+        self.board = self.createPuzzleBoard()
 
     def pattern(self, r, c): 
         return (self.base*(r%self.base)+r//self.base+c)%self.size
@@ -17,30 +17,29 @@ class Board():
         nums = shuffle(range(1, self.size+1))
 
         self.board = [[nums[self.pattern(r=r,c=c)] for c in columns] for r in rows]
-        self.printSolutionBoard()
-        return self.board
+
+        if self.print:
+            self.printSolutionBoard()
 
     def printSolutionBoard(self):
-        print("\n")
         for line in self.board:
             print(line)
-        print("\n")
 
     def createPuzzleBoard(self):
+        self.createSolutionBoard()
         square = self.size * self.size
         zeros = square * 3//4
         for p in sample(range(square), zeros):
             self.board[p//self.size][p%self.size] = 0
+        
+        if self.print:
+            self.printPuzzleBoard()
+        return self.board
 
+    def printPuzzleBoard(self):
         numSize = len(str(self.size))
-
-        self.printPuzzleBoard(numSize)
-
-    def printPuzzleBoard(self, numSize):
-        print("\n")
         for line in self.board:
             print("["+"  ".join(f"{n or '0':{numSize}}" for n in line)+"]")
-        print("\n")
 
 def shuffle(s):
     return sample(s,len(s))
