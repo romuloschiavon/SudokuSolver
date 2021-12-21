@@ -4,8 +4,8 @@ class Board():
     def __init__(self, base, print):
         self.base = base
         self.size = base*base
-        self.board = self.createPuzzleBoard()
         self.print = print
+        self.board = self.createPuzzleBoard()
 
     def pattern(self, r, c): 
         return (self.base*(r%self.base)+r//self.base+c)%self.size
@@ -43,5 +43,3 @@ class Board():
 
 def shuffle(s):
     return sample(s,len(s))
-
-Board(base=3, print=True)
