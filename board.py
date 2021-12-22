@@ -27,7 +27,8 @@ class Board():
 
     def createPuzzleBoard(self):
         self.createSolutionBoard()
-        square = self.size * self.size
+        #square = self.size * self.size
+        square = 20
         zeros = square * 3//4
         for p in sample(range(square), zeros):
             self.board[p//self.size][p%self.size] = 0

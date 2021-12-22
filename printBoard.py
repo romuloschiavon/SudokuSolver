@@ -1,9 +1,8 @@
 from board import *
 
 class PrintBoard():
-    def __init__(self, base):
-        self.base = base
-        self.board = Board(base=self.base, print=False).board
+    def __init__(self, board):
+        self.board = board
         
     def imprimir(self):
         Linha = " #########################"

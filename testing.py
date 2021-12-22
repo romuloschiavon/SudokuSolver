@@ -1,5 +1,3 @@
 #Works
 
-from printBoard import *
-
-PrintBoard(base=3).imprimir()
+print(10*3//4)
