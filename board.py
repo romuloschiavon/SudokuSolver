@@ -1,10 +1,11 @@
 from random import sample
 
 class Board():
-    def __init__(self, base, print):
+    def __init__(self, base, print,square):
         self.base = base
         self.size = base*base
         self.print = print
+        self.square = square
         self.board = self.createPuzzleBoard()
 
     def pattern(self, r, c): 
@@ -27,9 +28,9 @@ class Board():
 
     def createPuzzleBoard(self):
         self.createSolutionBoard()
-        square = self.size * self.size
-        zeros = square * 3//4
-        for p in sample(range(square), zeros):
+        #square = self.size * self.size
+        zeros = self.square * 3//4
+        for p in sample(range(self.square), zeros):
             self.board[p//self.size][p%self.size] = 0
         
         if self.print:

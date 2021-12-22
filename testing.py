@@ -1,5 +1,6 @@
 #Works
+from solveBoard import *
 
-from printBoard import *
-
-PrintBoard(base=3).imprimir()
+grid = Board(base=3, print=False, square=25).board
+PrintBoard(grid).imprimir()            
+BoardSolver(grid, base=3, print=True).solve()
