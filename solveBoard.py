@@ -1,25 +1,24 @@
 from printBoard import *
 
-grid = Board().board
-
 class BoardSolver():
-    def __init__(self, board, base):
+    def __init__(self, board, base, print):
         self.board = board
         self.base = base
         self.size = self.base*self.base
+        self.print = print
         self.solved = False
         
     def check(self, row, column, number):
-        global grid
+    
         
         #Check for Rows
         for i in range(0,self.size):
-            if grid[row][i] == number:
+            if self.board[row][i] == number:
                 return False
 
         #Check for columns
         for i in range(0,self.size):
-            if grid[i][column] == number:
+            if self.board[i][column] == number:
                 return False
         
         #Check for basexbase square
@@ -27,24 +26,25 @@ class BoardSolver():
         y = (row // self.base) * self.base
         for i in range(0,self.base):
             for j in range(0,self.base):
-                if grid[y+i][x+j] == number:
+                if self.board[y+i][x+j] == number:
                     return False
         return True
     
     def solve(self):
-        global grid
         for row in range(0,9):
             for column in range(0,9):
-                if grid[row][column] == 0:
+                if self.board[row][column] == 0:
                     for number in range(1,10):
                         if self.check(row, column, number):
-                            grid[row][column] = number
+                            self.board[row][column] = number
                             self.solve()
-                            grid[row][column] = 0
+                            self.board[row][column] = 0
 
                     return
         self.solved = True        
-        self.toPrint()
+        if self.print:
+            self.toPrint()
+            input("Press Enter to see the next solution")
             
     def toPrint(self):
         if self.solved:

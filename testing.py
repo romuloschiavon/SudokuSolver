@@ -1,3 +1,6 @@
 #Works
+from solveBoard import *
 
-print(10*3//4)
+grid = Board(base=3, print=False, square=25).board
+PrintBoard(grid).imprimir()            
+BoardSolver(grid, base=3, print=True).solve()
