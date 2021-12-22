@@ -1,5 +1,7 @@
 from printBoard import *
 
+solutions = []
+
 class BoardSolver():
     def __init__(self, board, base, print):
         self.board = board
@@ -7,10 +9,9 @@ class BoardSolver():
         self.size = self.base*self.base
         self.print = print
         self.solved = False
+        self.solutions = [] 
         
     def check(self, row, column, number):
-    
-        
         #Check for Rows
         for i in range(0,self.size):
             if self.board[row][i] == number:
@@ -41,11 +42,14 @@ class BoardSolver():
                             self.board[row][column] = 0
 
                     return
-        self.solved = True        
+        self.solved = True
         if self.print:
             self.toPrint()
-            input("Press Enter to see the next solution")
-            
+        if self.solved:
+            global solutions
+            solutions.append(self.board)
+            #print(solutions)
+          
     def toPrint(self):
         if self.solved:
             PrintBoard(self.board).imprimir()
