@@ -2,7 +2,7 @@ from printBoard import *
 
 solutions = []
 
-class BoardSolver():
+class SolveBoard():
     def __init__(self, board, base, print):
         self.board = board
         self.base = base
