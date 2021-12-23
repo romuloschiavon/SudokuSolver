@@ -9,6 +9,7 @@ class PrintBoard():
         i = 0
         j = 0
         print("\n" + Linha, end="\n")
+        global all_the_solutions
         for line in self.board:
             print(" ", end="")
             print("# ", end="")
